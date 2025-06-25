@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menús de Restaurantes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #bedac8;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header, footer {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #222;
+    }
+
+    header p {
+      color: #666;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .restaurante {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .restaurante:hover {
+      transform: translateY(-2px);
+    }
+
+    .rest-img {
+      width: 150px;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    .rest-content {
+      flex: 1;
+    }
+
+    .rest-content h2 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #1a1a1a;
+    }
+
+    .btn-toggle {
+      background-color: #09ab06;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-toggle:hover {
+      background-color: #078b05;
+    }
+
+    .menu {
+      display: none;
+      margin-top: 15px;
+      padding-left: 20px;
+      list-style: disc;
+    }
+
+    .menu li {
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #eee;
+    }
+
+    footer {
+      margin-top: 40px;
+      color: #666;
+    }
+
+    footer a {
+      color: #09ab06;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .restaurante {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .rest-img {
+        width: 100%;
+        max-width: 300px;
+      }
+
+      .btn-toggle {
+        width: 100%;
+      }
+    }
+    .btn-wsp {
+  background-color: #09ab06;
+  margin-top: 10px;
+}
+.btn-wsp:hover {
+  background-color: #09ab06;
+}
+
+  </style>
+  
+</head>
+<body>
+<script>
+  function pedirWhatsApp(numero, mensaje) {
+    const limpio = numero.replace(/\D/g, '');
+    const url = `https://wa.me/52${limpio}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function toggleMenu(button) {
+    const menu = button.nextElementSibling;
+    if (menu.style.display === "none" || menu.style.display === "") {
+      menu.style.display = "block";
+      button.textContent = "Ocultar menú";
+    } else {
+      menu.style.display = "none";
+      button.textContent = "Ver menú";
+    }
+  }
+</script>
+
+  <header>
+    <h1>Estación</h1>
+    <p>Elige tu restaurante favorito y pide con nosotros</p>
+  </header>
+
+  <main>
+    <!-- Restaurante con imagen -->
+    <section class="restaurante">
+      <img src="tacosss.jpg" alt="Restaurante Taconazo" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3318631834</p>
+        <button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3318631834', 'Hola, quiero realizar un Pedido')">Pedir por WhatsApp</button>
+
+        <h2>Taconazo</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu">
+          <li>Taco de Arrachera - $25</li>
+          <li>Taco de peinecillo - $32</li>
+          <li>Taco de Costilla - $25</li>
+          <li>Taco de Chorizo - $22</li>
+          <li>Taconazo de Arrachera - $75</li>
+          <li>Taconazo de peinecillo - $70</li>     
+          <li>Taconazo de Chorizo - $65</li>
+          <li>Taconazo de Queso - $50</li>
+        </ul>
+      </div>
+    </section>
+
+<section class="restaurante">
+  <img src="hamham.jpg" alt="Restaurante Ham Ham" class="rest-img">
+  <div class="rest-content">
+    <p><strong>Teléfono:</strong> 3323006201</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3323006201', 'Hola, quiero pedir de Ham Ham')">Pedir por WhatsApp</button>
+
+    <h2>Ham Ham</h2>
+    <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+    <ul class="menu">
+      <li>Hamburguesa doble - $60</li>
+    </ul>
+  </div>
+</section>
+
+    <section class="restaurante">
+      <img src="flautas.png" alt="Restaurante Flautas La Furia" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3338097529</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3338097529', 'Hola, quiero pedir de Flautas La Furia')">Pedir por WhatsApp</button>
+
+        <h2>Flautas La Furia</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="garcia.jpg" alt="Restaurante Flautas Los García" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3315961961</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3315961961', 'Hola, quiero pedir de Flautas Los García')">Pedir por WhatsApp</button>
+
+        <h2>Flautas Los García</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="lobinaloca.jpg" alt="Restaurante Lobina Loca" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3336577592</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3336577592', 'Hola, quiero pedir de Lobina Loca')">Pedir por WhatsApp</button>
+
+        <h2>Lobina Loca</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="mariscos.jpg" alt="Restaurante Mariscos Beto" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3331586469</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3331586469', 'Hola, quiero pedir de Mariscos Beto')">Pedir por WhatsApp</button>
+
+        <h2>Mariscos Beto</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="lonches.jpg" alt="Restaurante Lonches Calientes" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3328102792</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3328102792', 'Hola, quiero pedir de Lonches Calientes')">Pedir por WhatsApp</button>
+
+        <h2>Lonches Calientes</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="lechon.jpg" alt="Restaurante Carnitas Don Andrés" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3313078610</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3313078610', 'Hola, quiero pedir de Carnitas Don Andrés')">Pedir por WhatsApp</button>
+
+        <h2>Carnitas Don Andrés</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="huaraches.jpg" alt="Restaurante Huaraches" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3320189259</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3320189259', 'Hola, quiero pedir de Huaraches')">Pedir por WhatsApp</button>
+
+        <h2>Huaraches</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="fish.jpg" alt="Restaurante Shrimp Fish" class="rest-img">
+      <div class="rest-content">
+        <p><strong>Teléfono:</strong> 3311096924</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3311096924', 'Hola, quiero pedir de Shrimp Fish')">Pedir por WhatsApp</button>
+
+        <h2>Shrimp Fish</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="lacocina.jpeg" alt="Restaurante La Cocina" class="rest-img">
+      <div class="rest-content">
+
+        <p><strong>Teléfono:</strong> 3310252087</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3310252087', 'Hola, quiero pedir de La Gran Cocina')">Pedir por WhatsApp</button>
+
+        <h2>La Gran Cocina</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="antigua.jpg" alt="Restaurante Vinatería La Antigua" class="rest-img">
+      <div class="rest-content">
+
+        <p><strong>Teléfono:</strong> 3322348313</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3322348313', 'Hola, quiero pedir de Vinatería La Antigua')">Pedir por WhatsApp</button>
+
+        <h2>Vinatería La Antigua</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="tripas.jpg" alt="Restaurante Tripitas Jeshua" class="rest-img">
+      <div class="rest-content">
+
+        <p><strong>Teléfono:</strong> 3321862692</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3321862692', 'Hola, quiero pedir de Tripitas Jeshua')">Pedir por WhatsApp</button>
+
+        <h2>Tripitas Jeshua</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+
+    <section class="restaurante">
+      <img src="punto.jpg" alt="Restaurante Punto Oriental" class="rest-img">
+      <div class="rest-content">
+
+        <p><strong>Teléfono:</strong> 3322178399</p>
+<button class="btn-toggle btn-wsp" onclick="pedirWhatsApp('3322178399', 'Hola, quiero pedir de Punto Oriental')">Pedir por WhatsApp</button>
+
+        <h2>Punto Oriental</h2>
+        <button class="btn-toggle" onclick="toggleMenu(this)">Ver menú</button>
+        <ul class="menu"></ul>
+      </div>
+    </section>
+  </main>
+
+  </main>
+
+  <footer>
+    <p>Pide Con Nosotros por <a href="https://wa.me/523311013156" target="_blank">WhatsApp</a></p>
+  </footer>
+
+  <script>
+    function toggleMenu(button) {
+      const menu = button.nextElementSibling;
+      if (menu.style.display === "none" || menu.style.display === "") {
+        menu.style.display = "block";
+        button.textContent = "Ocultar menú";
+      } else {
+        menu.style.display = "none";
+        button.textContent = "Ver menú";
+      }
+    }
+  </script>
+
+</body>
+</html>
